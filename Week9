@@ -1,4 +1,4 @@
--- Question 1 : Procedure
+----------------------------------------- Question 1 : Procedure
 CREATE OR REPLACE 
 PROCEDURE SHIP_COST_SP
 (p_qty IN NUMBER,
@@ -14,7 +14,7 @@ p_ship := 5.00;
 END IF;
 END SHIP_COST_SP;
 
--- Tested Question 1
+------------------------------------------- Tested Question 1
 DECLARE
 lv_ship_num NUMBER(6,2);
 BEGIN
@@ -22,7 +22,7 @@ SHIP_COST_SP(2, lv_ship_num);
 DBMS_OUTPUT.PUT_LINE('Ship Cost =' || lv_ship_num);
 END;
 
--- QUESTION - 2 : Same variable for IN and OUT
+--------------------------------------------- QUESTION - 2 : Same variable for IN and OUT
 CREATE OR REPLACE PROCEDURE phone_fmt_sp
    (p_phone IN OUT VARCHAR2)
   IS
@@ -31,7 +31,7 @@ BEGIN
                     SUBSTR(p_phone,4,3) || '-' ||
                     SUBSTR(p_phone,7,4);
 END;
--- Testing Ques 2
+------------------------------------------------ Testing Ques 2
 DECLARE
 lv_phone_txt VARCHAR2(13) := '1112223333';
 BEGIN
