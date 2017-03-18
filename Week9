@@ -40,4 +40,25 @@ DBMS_OUTPUT.PUT_LINE(lv_phone_txt);
 END;
 
 
+---------- Question 3 ( 2 procedures ; calling one from another)
+
+create or replace procedure order_total_sp
+(p_bsktid IN bb_basketitem.idbasket%TYPE,
+p_cnt OUT NUMBER,
+p_sub OUT NUMBER,
+P_ship OUT NUMBER,
+p_total OUT NUMBER)
+
+IS 
+BEGIN
+DBMS_OUTPUT.PUT_LINE('order total proc called');
+select SUM(quantity), SUM(quantity*price)
+INTO p_cnt, p_sub
+from bb_basketitem
+where idbasket = p_bsktid;
+ship_cost_sp(p_cnt,p_ship);
+p_total := NVL(p_sub,0)+ NVL(p_ship,0);
+DBMS_OUTPUT.PUT_LINE('ORDER TOTAL PROC ENDED');
+END ORDER_TOTAL_SP;
+
 
